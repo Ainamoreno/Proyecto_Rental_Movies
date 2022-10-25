@@ -1,0 +1,26 @@
+{
+  "name": "proyecto_rental_movies",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ainamoreno/Proyecto_Rental_Movies.git"
+  },
+  "author": "Aina Moreno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ainamoreno/Proyecto_Rental_Movies/issues"
+  },
+  "homepage": "https://github.com/Ainamoreno/Proyecto_Rental_Movies#readme",
+  "dependencies": {
+    "express": "4.18.2",
+    "mysql": "2.18.1",
+    "mysql2": "2.3.3",
+    "nodemon": "2.0.20",
+    "sequelize": "6.25.3"
+  }
+}
