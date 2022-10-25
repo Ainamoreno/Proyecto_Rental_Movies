@@ -1,23 +1,23 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../db/db');
 
-class Movie extends Model { };
+class User extends Model { };
 
-Movie.init({
-    movieId: {
+User.init({
+    userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true
     },
-    movieName: DataTypes.STRING,
-    descriptionMovie: DataTypes.TEXT,
-    premiereMovie: DataTypes.DATE
+    userName: DataTypes.STRING,
+    dateBith: DataTypes.DATE,
+    phone: DataTypes.STRING
 },
 {
     sequelize,
-    modelName: 'movie',
+    modelName: 'users',
     freezeTableName: true,
     timestamps: false
 });
 
-module.exports = Movie
+module.exports = User

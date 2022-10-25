@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const MovieRoutes = require('./views/moviesRoutes');
+const UserRoutes = require('./views/usersRoutes');
 
 //midleware
-router.use('/movies', MovieRoutes)
+router.use('/users', UserRoutes)
 
 
 module.exports = router
