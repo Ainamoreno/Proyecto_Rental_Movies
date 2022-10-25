@@ -1,0 +1,10 @@
+{
+    "development": {
+        "username": "root",
+        "passwoord": "rootrental",
+        "database": "RentalMovies",
+        "host": "localhost",
+        "dialect": "mysql",
+        "port" : "33660"
+    }
+}
