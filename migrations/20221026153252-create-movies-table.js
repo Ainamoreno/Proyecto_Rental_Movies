@@ -3,16 +3,17 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('users', {
-      userId: {
+
+    await queryInterface.createTable('movies', {
+      movieId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true
       },
-      userName: Sequelize.STRING,
-      dateBirth: Sequelize.DATE,
-      phone: Sequelize.STRING
+      movieName: Sequelize.STRING,
+      description: Sequelize.TEXT,
+      premiereMovie: Sequelize.DATE
     });
 
   },
