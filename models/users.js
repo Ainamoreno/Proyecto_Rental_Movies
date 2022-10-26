@@ -10,7 +10,7 @@ User.init({
         primaryKey: true
     },
     userName: DataTypes.STRING,
-    dateBith: DataTypes.DATE,
+    dateBirth: DataTypes.DATE,
     phone: DataTypes.STRING
 },
 {
