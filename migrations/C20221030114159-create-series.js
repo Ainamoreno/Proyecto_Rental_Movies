@@ -27,6 +27,9 @@ module.exports = {
       next_episode: {
         type: Sequelize.DATEONLY
       },
+      permit: {
+        type: Sequelize.ENUM('teatro', 'cine')
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -34,6 +37,15 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      id_article: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "articles",
+          key: "id_article"
+        },
+        onDelete: 'cascade',
+        onUpdate: 'cascade'
       }
     });
   },

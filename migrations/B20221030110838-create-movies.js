@@ -24,6 +24,9 @@ module.exports = {
       data_premiere: {
         type: Sequelize.DATEONLY
       },
+      genre: {
+        type: Sequelize.ENUM('acción', 'terror', 'suspense', 'aventura', 'animación', 'comedia', 'drama', 'fantasía', 'historia', 'música', 'misterio', 'ciencia ficción')
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -36,7 +39,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: "articles",
-          key: "id_articles"
+          key: "id_article"
         },
         onDelete: 'cascade',
         onUpdate: 'cascade'

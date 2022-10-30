@@ -14,11 +14,16 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   articles.init({
-    id_article: DataTypes.INTEGER
-  }, 
-  {
-    sequelize,
-    modelName: 'articles',
-  });
+    id_article: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    }
+  },
+    {
+      sequelize,
+      modelName: 'articles',
+    });
   return articles;
 };

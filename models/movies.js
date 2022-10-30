@@ -24,7 +24,8 @@ module.exports = (sequelize, DataTypes) => {
     photo: DataTypes.STRING,
     score: DataTypes.DECIMAL,
     description: DataTypes.TEXT,
-    data_premiere: DataTypes.DATEONLY
+    data_premiere: DataTypes.DATEONLY,
+    genre: DataTypes.ENUM('acción', 'terror', 'suspense', 'aventura', 'animación', 'comedia', 'drama', 'fantasía', 'historia', 'música', 'misterio', 'ciencia ficción')
   }, 
   {
     sequelize,

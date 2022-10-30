@@ -25,7 +25,8 @@ module.exports = (sequelize, DataTypes) => {
     score: DataTypes.DECIMAL,
     description: DataTypes.TEXT,
     data_premiere: DataTypes.DATEONLY,
-    next_episode: DataTypes.DATEONLY
+    next_episode: DataTypes.DATEONLY,
+    permit: DataTypes.ENUM('teatro', 'cine'),
   }, 
   {
     sequelize,
