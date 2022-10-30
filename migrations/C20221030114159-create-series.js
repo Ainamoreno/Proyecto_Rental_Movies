@@ -16,7 +16,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       score: {
-        type: Sequelize.DECIMAL
+        type: Sequelize.DECIMAL(10,2)
       },
       description: {
         type: Sequelize.TEXT
