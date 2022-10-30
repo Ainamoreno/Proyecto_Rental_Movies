@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-
-const User = require('../models/users')
+const models = require('../models/index')
+// const User = require('../models/users')
 
 router.get('/getUsers', (req, res) => {
-    User.findAll()
+    models.User.findAll()
     .then(resp => {
         res.send(resp)
     })
