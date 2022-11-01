@@ -1,14 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const models = require('../models/index')
-// const User = require('../models/users')
+const usersControllers = require('../controllers/usersControllers');
 
-router.get('/getUsers', (req, res) => {
-    models.User.findAll()
-    .then(resp => {
-        res.send(resp)
-    })
-});
+
+router.get('/showUser', usersControllers.getusers_1 );
+router.post('/createUser/:user', usersControllers.postuser_1)
 
 
 module.exports = router

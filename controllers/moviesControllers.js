@@ -3,42 +3,84 @@ const models = require('../models/index');
 const moviesController = {};
 
 moviesController.getMovies_1 = async (req, res) => {
-    let resp = await models.movies.findAll({
-        order: [
-            ["score", 'DESC']
-        ]
-    })
-    res.send(resp);
+    try {
+        let resp = await models.articles.findAll({
+            attributes: {
+                exclude: ['createdAt', 'updatedAt', 'articleIdArticle']
+            },
+            where: { type: 'Película' },
+            order: [
+                ["score", 'DESC']
+            ],
+        })
+        res.send(resp);
+    } catch (err) {
+        res.send(err)
+    }
+
 };
 
 moviesController.getMovies_2 = async (req, res) => {
-    let id = req.params.id
-    let resp = await models.movies.findAll(
-        {
+    try {
+        let id = req.params.id
+        let resp = await models.movies.findAll({
+            attributes: {
+                exclude: ['createdAt', 'updatedAt', 'articleIdArticle']
+            },
             where: { id_movie: id },
-        },
-    )
-    res.send(resp);
+            include: {
+                model: models.articles,
+                attributes: ['name']
+            }
+
+        })
+        res.send(resp);
+    } catch (err) {
+        res.send(err)
+    }
+
 };
 
 moviesController.getMovies_3 = async (req, res) => {
-    let name = req.params.name;
-    let resp = await models.movies.findAll(
-        {
-            where: { nameMovie: name }
-        }
-    )
-    res.send(resp);
+    try {
+        let name = req.params.name;
+        let resp = await models.articles.findAll({
+            attributes: {
+                exclude: ['createdAt', 'updatedAt', 'articleIdArticle']
+            },
+            where: {
+                name: name,
+                type: 'Película'
+            }
+
+        })
+        res.send(resp);
+    } catch (err) {
+        res.send(err)
+    }
+
 };
 
 moviesController.getMovies_4 = async (req, res) => {
-    let genreM = req.params.genreM;
-    let resp = await models.movies.findAll(
-        {
-            where: { genre: genreM }
-        }
-    )
-    res.send(resp);
+    try {
+        let genreM = req.params.genreM;
+        let resp = await models.movies.findAll({
+            attributes: {
+                exclude: ['createdAt', 'updatedAt', 'articleIdArticle']
+            },
+            where: { genre: genreM },
+            include: {
+                model: models.articles,
+                attributes: ['name', 'photo', 'score', 'description', 'data_premiere']
+            }
+
+        })
+        res.send(resp);
+    } catch (err) {
+        res.send(err)
+    }
+
 };
+
 
 module.exports = moviesController

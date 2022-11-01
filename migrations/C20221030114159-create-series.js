@@ -9,26 +9,12 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      nameSerie: {
-        type: Sequelize.STRING
-      },
-      photo: {
-        type: Sequelize.STRING
-      },
-      score: {
-        type: Sequelize.DECIMAL(10,2)
-      },
-      description: {
-        type: Sequelize.TEXT
-      },
-      data_premiere: {
-        type: Sequelize.DATEONLY
-      },
+
       next_episode: {
         type: Sequelize.DATEONLY
       },
       permit: {
-        type: Sequelize.ENUM('teatro', 'cine')
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,

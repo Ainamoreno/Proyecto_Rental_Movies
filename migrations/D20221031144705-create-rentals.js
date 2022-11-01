@@ -2,19 +2,13 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('articles', {
-      id_article: {
+    await queryInterface.createTable('rentals', {
+      id_rental: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: Sequelize.STRING,
-      photo: Sequelize.STRING,
-      score: Sequelize.DECIMAL(10,1),
-      description: Sequelize.TEXT,
-      data_premiere: Sequelize.DATEONLY,
-      type: Sequelize.ENUM('Película', 'Serie'),
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -22,10 +16,19 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      id_article: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "articles",
+          key: "id_article"
+        },
+        onDelete: 'cascade',
+        onUpdate: 'cascade'
       }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('articles');
+    await queryInterface.dropTable('rentals');
   }
 };

@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const movies = require('./movies');
 module.exports = (sequelize, DataTypes) => {
   class articles extends Model {
     /**
@@ -10,7 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      articles.hasOne(models.movies, {
+        foreingKey: 'id_article'
+      })
+      // articles.belongsTo(models.movies)
     }
   }
   articles.init({
@@ -19,7 +23,13 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
-    }
+    },
+    name: DataTypes.STRING,
+    photo: DataTypes.STRING,
+    score: DataTypes.DECIMAL,
+    description: DataTypes.TEXT,
+    data_premiere: DataTypes.DATEONLY,
+    type: DataTypes.ENUM('Película', 'Serie')
   },
     {
       sequelize,

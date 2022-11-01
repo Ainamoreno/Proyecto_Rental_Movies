@@ -2,11 +2,13 @@ const express = require('express');
 const router = express.Router();
 
 const UserRoutes = require('./views/usersRoutes');
-const moviesRoutes = require('./views/moviesRoutes')
+const moviesRoutes = require('./views/moviesRoutes');
+const seriesRoutes = require('./views/seriesRoutes');
 
-//midleware
-router.use('/users', UserRoutes)
-router.use('/movies', moviesRoutes)
+//middleware
+router.use('/users', UserRoutes);
+router.use('/movies', moviesRoutes);
+router.use('/series', seriesRoutes);
 
 
-module.exports = router
+module.exports = router;

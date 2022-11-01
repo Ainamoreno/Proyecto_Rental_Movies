@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class series extends Model {
+  class rental extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,19 +13,31 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  series.init({
-    id_serie: {
+  rental.init({
+    id_rental: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    next_episode: DataTypes.DATEONLY,
-    permit: DataTypes.BOOLEAN,
-  }, 
-  {
-    sequelize,
-    modelName: 'series',
-  });
-  return series;
+    id_article: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'articles',
+        key: 'id_article'
+      }
+    },
+    id_user: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'users',
+        key: 'id_user'
+      }
+    }
+  },
+    {
+      sequelize,
+      modelName: 'rentals',
+    });
+  return rental;
 };

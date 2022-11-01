@@ -9,21 +9,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      nameMovie: {
-        type: Sequelize.STRING
-      },
-      photo: {
-        type: Sequelize.STRING
-      },
-      score: {
-        type: Sequelize.DECIMAL(10,2)
-      },
-      description: {
-        type: Sequelize.TEXT
-      },
-      data_premiere: {
-        type: Sequelize.DATEONLY
-      },
       genre: {
         type: Sequelize.ENUM('acción', 'terror', 'suspense', 'aventura', 'animación', 'comedia', 'drama', 'fantasía', 'historia', 'música', 'misterio', 'ciencia ficción')
       },
@@ -43,7 +28,8 @@ module.exports = {
         },
         onDelete: 'cascade',
         onUpdate: 'cascade'
-      }
+      },
+      articleIdArticle: Sequelize.INTEGER
     });
   },
   async down(queryInterface, Sequelize) {

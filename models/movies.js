@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const articles = require('./articles');
 module.exports = (sequelize, DataTypes) => {
   class movies extends Model {
     /**
@@ -10,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      movies.belongsTo(models.articles, {
+        foreignKey: 'id_article'
+      });
     }
   }
   movies.init({
@@ -20,16 +23,19 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    nameMovie: DataTypes.STRING,
-    photo: DataTypes.STRING,
-    score: DataTypes.DECIMAL,
-    description: DataTypes.TEXT,
-    data_premiere: DataTypes.DATEONLY,
-    genre: DataTypes.ENUM('acción', 'terror', 'suspense', 'aventura', 'animación', 'comedia', 'drama', 'fantasía', 'historia', 'música', 'misterio', 'ciencia ficción')
-  }, 
-  {
-    sequelize,
-    modelName: 'movies',
-  });
+    genre: DataTypes.ENUM('acción', 'terror', 'suspense', 'aventura', 'animación', 'comedia', 'drama', 'fantasía', 'historia', 'música', 'misterio', 'ciencia ficción'),
+    id_article: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'articles',
+        key: 'id_article'
+      }
+    },
+    articleIdArticle: DataTypes.INTEGER
+  },
+    {
+      sequelize,
+      modelName: 'movies',
+    });
   return movies;
 };
