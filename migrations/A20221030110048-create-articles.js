@@ -9,20 +9,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: Sequelize.STRING,
+      name: {
+        type:Sequelize.STRING,
+        unique: true
+      }, 
       photo: Sequelize.STRING,
       score: Sequelize.DECIMAL(10,1),
       description: Sequelize.TEXT,
       data_premiere: Sequelize.DATEONLY,
       type: Sequelize.ENUM('Película', 'Serie'),
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
     });
   },
   async down(queryInterface, Sequelize) {

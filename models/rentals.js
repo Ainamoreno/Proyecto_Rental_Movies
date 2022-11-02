@@ -20,13 +20,6 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    id_article: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'articles',
-        key: 'id_article'
-      }
-    },
     id_user: {
       type: DataTypes.INTEGER,
       references: {

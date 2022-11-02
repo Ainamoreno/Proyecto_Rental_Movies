@@ -20,7 +20,16 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    nombre: DataTypes.STRING
+    name: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      unique: true
+    } ,
+    dateBirth: DataTypes.DATEONLY,
+    phone: {
+      type: DataTypes.STRING,
+      unique: true
+    } 
   },
     {
       sequelize,

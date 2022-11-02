@@ -6,7 +6,7 @@ moviesController.getMovies_1 = async (req, res) => {
     try {
         let resp = await models.articles.findAll({
             attributes: {
-                exclude: ['createdAt', 'updatedAt', 'articleIdArticle']
+                exclude: ['createdAt', 'updatedAt', 'articleIdArticle' ]
             },
             where: { type: 'Película' },
             order: [

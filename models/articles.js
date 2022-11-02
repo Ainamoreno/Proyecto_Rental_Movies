@@ -24,7 +24,10 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    name: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      unique: true
+    },
     photo: DataTypes.STRING,
     score: DataTypes.DECIMAL,
     description: DataTypes.TEXT,

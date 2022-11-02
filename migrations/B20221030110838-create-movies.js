@@ -10,15 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       genre: {
-        type: Sequelize.ENUM('acción', 'terror', 'suspense', 'aventura', 'animación', 'comedia', 'drama', 'fantasía', 'historia', 'música', 'misterio', 'ciencia ficción')
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       id_article: {
         type: Sequelize.INTEGER,
@@ -29,7 +21,7 @@ module.exports = {
         onDelete: 'cascade',
         onUpdate: 'cascade'
       },
-      articleIdArticle: Sequelize.INTEGER
+      // articleIdArticle: Sequelize.INTEGER
     });
   },
   async down(queryInterface, Sequelize) {

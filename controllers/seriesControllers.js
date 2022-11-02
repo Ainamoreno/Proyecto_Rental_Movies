@@ -46,17 +46,28 @@ seriesController.getseries_3 = async (req, res) => {
     }
 
 };
+const sequelize = require('../db/db')
+const { Sequelize } = require('sequelize')
+let date = `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate() + 7}`
+const { Op } = require("sequelize");
 
-// let date = `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()+7}`
-// const { Op } = require("sequelize");
+seriesController.getByDate = async (req, res) => {
+    let resp = await sequelize.query("SELECT * FROM railway.series where next_episode BETWEEN (CURDATE()) and (CURDATE() + INTERVAL 7 DAY)");
+    res.send(resp);
+};
 // seriesController.getseries_4 = async (req, res) => {
 //     let resp = await models.series.findAll(
 //         {
-//             where: { [Op.between] : {next_episode : date}}
+//             where: {
+//                 [Sequelize.Op.and]: [
+//                     Sequelize.literal(`next_episode > NOW() - INTERVAL '5h'`),
+//                 ],
+//             },
 //         }
 //     )
 //     res.send(resp);
 // };
+
 seriesController.getseries_5 = async (req, res) => {
     try {
         let resp = await models.series.findAll(
