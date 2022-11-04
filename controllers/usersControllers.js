@@ -1,6 +1,6 @@
 const models = require('../models/index');
 const bcrypt = require('bcrypt');
-
+const jsonwebtoken = require("jsonwebtoken");
 const usersControllers = {};
 
 usersControllers.getusers_1 = async (req, res) => {
@@ -33,7 +33,6 @@ usersControllers.postusers_1 = async (req, res) => {
         return;
     }
     try {
-        // const saltRounds = 10;
         const myPlaintextPassword = body.password;
         console.log(myPlaintextPassword)
         bcrypt.genSalt(function async(err, salt) {
@@ -61,28 +60,37 @@ usersControllers.loginUser = async (req, res) => {
     const { email, password } = req.body;
     const userFound = await models.users.findOne({ where: { email: email } });
     if (!userFound) {
-        res.status(404).json({ message: "Usuario no encontrado" })
+        res.status(404).json({ message: "La contraseña o el email son incorrectos" })
         return;
     }
-    const hashedPassword = async () => {
-        // const saltRounds = " ";
-
-        console.log(password)
+    const hashedPassword = () => {
         const loginPassword = password;
-        console.log(loginPassword);
         bcrypt.compare(loginPassword, userFound.password, function (err, result) {
             if (!result) {
                 console.log(result)
-                res.status(401).json({ message: "Password or email is incorrect" });
+                res.status(401).json({ message: "La contraseña o el email son incorrectos" });
                 return;
             }
         });
     }
     hashedPassword()
+    const secret = "secretAAAHHhhaa56789";
 
+    // if (secret.length < 10) {
+    //     throw new Error("JWT_SECRET is not set");
+    // }
+
+    const jwt = jsonwebtoken.sign({
+        id_user: userFound.id_user,
+        email: userFound.email,
+        id_rol: userFound.id_rol
+    }, secret);
+    // console.log({email: userFound.email})
+    res.send({
+        message: "Login realizado correctamente",
+        jwt: jwt,
+    });
 }
-
-
 
 function assertValidPasswordService(pass) {
     if (pass.length < 8) {
@@ -151,11 +159,11 @@ usersControllers.putusers_1 = async (req, res) => {
     }
 };
 
-usersControllers.deleteusers_1 = async (req, res) => {
+usersControllers.deleteUsers = async (req, res) => {
     try {
-        let id = req.params.id
+        let id = req.body
         let resp = await models.users.destroy({
-            where: { id_user: id }
+            where: { id_user: id.id_user }
         })
         if (resp == 1) {
             res.send("Se ha eliminado correctamente")

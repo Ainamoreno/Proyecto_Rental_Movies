@@ -5,6 +5,8 @@ const router = require('./router');
 const morgan = require('morgan');
 const { sequelize } = require('./models/index')
 const PORT = 7001;
+require('dotenv').config({path:'.env'})
+
 
 /*Json, ejecutamos el método json de express que nos permitirá 
 poder trabajar con formato json en nuestra app*/

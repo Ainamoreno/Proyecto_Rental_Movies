@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('rentals_articles', {
+    await queryInterface.createTable('rentalsArticles', {
       id_rental_article: {
         allowNull: false,
         autoIncrement: true,
@@ -29,6 +29,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('rentals_articles');
+    await queryInterface.dropTable('rentalsArticles');
   }
 };

@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       // User.belongsToMany(models.roles,
       //   {
       //     foreignKey: {
-      //       name: "id_user"
+      //       name: "nameRol"
       //     }
       //   }
       // );

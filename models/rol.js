@@ -20,8 +20,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   Rol.init({
     id_rol: {
-      type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
     },
     nameRol: DataTypes.STRING
   },
