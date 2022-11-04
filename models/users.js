@@ -18,13 +18,13 @@ module.exports = (sequelize, DataTypes) => {
           }
         }
       )
-      User.belongsToMany(models.roles,
-        {
-          foreignKey: {
-            name: "id_user"
-          }
-        }
-      );
+      // User.belongsToMany(models.roles,
+      //   {
+      //     foreignKey: {
+      //       name: "id_user"
+      //     }
+      //   }
+      // );
     }
   }
   User.init({

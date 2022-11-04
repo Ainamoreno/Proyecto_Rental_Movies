@@ -14,7 +14,6 @@ usersControllers.getusers_1 = async (req, res) => {
 
 };
 
-
 usersControllers.postusers_1 = async (req, res) => {
     const body = req.body;
     // validate password
@@ -34,10 +33,10 @@ usersControllers.postusers_1 = async (req, res) => {
         return;
     }
     try {
-        const saltRounds = 10;
+        // const saltRounds = 10;
         const myPlaintextPassword = body.password;
         console.log(myPlaintextPassword)
-        bcrypt.genSalt(saltRounds, function async(err, salt) {
+        bcrypt.genSalt(function async(err, salt) {
             bcrypt.hash(myPlaintextPassword, salt, async function (err, hash) {
                 const userCreated = await models.users.create(
                     {
@@ -57,6 +56,33 @@ usersControllers.postusers_1 = async (req, res) => {
         res.send(err)
     }
 };
+
+usersControllers.loginUser = async (req, res) => {
+    const { email, password } = req.body;
+    const userFound = await models.users.findOne({ where: { email: email } });
+    if (!userFound) {
+        res.status(404).json({ message: "Usuario no encontrado" })
+        return;
+    }
+    const hashedPassword = async () => {
+        // const saltRounds = " ";
+
+        console.log(password)
+        const loginPassword = password;
+        console.log(loginPassword);
+        bcrypt.compare(loginPassword, userFound.password, function (err, result) {
+            if (!result) {
+                console.log(result)
+                res.status(401).json({ message: "Password or email is incorrect" });
+                return;
+            }
+        });
+    }
+    hashedPassword()
+
+}
+
+
 
 function assertValidPasswordService(pass) {
     if (pass.length < 8) {
