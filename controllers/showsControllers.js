@@ -1,11 +1,11 @@
 const models = require('../models/index');
 
-const seriesController = {};
+const showsController = {};
 
 
-seriesController.getseries_1 = async (req, res) => {
+showsController.getshows_1 = async (req, res) => {
     try {
-        let resp = await models.series.findAll({
+        let resp = await models.shows.findAll({
             order: [
                 ["score", 'DESC']
             ]
@@ -17,10 +17,10 @@ seriesController.getseries_1 = async (req, res) => {
 
 };
 
-seriesController.getseries_2 = async (req, res) => {
+showsController.getshows_2 = async (req, res) => {
     try {
         let id = req.params.id
-        let resp = await models.series.findAll(
+        let resp = await models.shows.findAll(
             {
                 where: { id_serie: id }
             }
@@ -32,10 +32,10 @@ seriesController.getseries_2 = async (req, res) => {
 
 };
 
-seriesController.getseries_3 = async (req, res) => {
+showsController.getshows_3 = async (req, res) => {
     try {
         let name = req.params.name;
-        let resp = await models.series.findAll(
+        let resp = await models.shows.findAll(
             {
                 where: { nameSerie: name }
             }
@@ -51,26 +51,14 @@ const { Sequelize } = require('sequelize')
 let date = `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate() + 7}`
 const { Op } = require("sequelize");
 
-seriesController.getByDate = async (req, res) => {
-    let resp = await sequelize.query("SELECT * FROM railway.series where next_episode BETWEEN (CURDATE()) and (CURDATE() + INTERVAL 7 DAY)");
+showsController.getshows_4 = async (req, res) => {
+    let resp = await sequelize.query("SELECT * FROM railway.shows where next_episode BETWEEN (CURDATE()) and (CURDATE() + INTERVAL 7 DAY)");
     res.send(resp);
 };
-// seriesController.getseries_4 = async (req, res) => {
-//     let resp = await models.series.findAll(
-//         {
-//             where: {
-//                 [Sequelize.Op.and]: [
-//                     Sequelize.literal(`next_episode > NOW() - INTERVAL '5h'`),
-//                 ],
-//             },
-//         }
-//     )
-//     res.send(resp);
-// };
 
-seriesController.getseries_5 = async (req, res) => {
+showsController.getshows_5 = async (req, res) => {
     try {
-        let resp = await models.series.findAll(
+        let resp = await models.shows.findAll(
             {
                 where: { permit: true }
             }
@@ -83,4 +71,4 @@ seriesController.getseries_5 = async (req, res) => {
 };
 
 
-module.exports = seriesController;
+module.exports = showsController;

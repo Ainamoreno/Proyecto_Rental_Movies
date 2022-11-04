@@ -2,18 +2,28 @@ const models = require('../models/index');
 
 const rentalsControllers = {};
 
-
 rentalsControllers.postrental_1 = async (req, res) => {
     try {
-        let rental = req.body;
-        let resp = await models.rentals.create(
+        let id = req.params.id
+        let resp = await models.rentals.create (
             {
-                id_article : rental.id_article
+                id_user : id
             }
         )
-        res.send(resp)
+        let rental = req.body
+
+        let respRental = await models.rentals_articles.create(
+            {
+                id_rental : rental.id_rental,
+                articleIdArticle : rental.articleIdArticle
+            }
+        )
+        res.send(
+            respRental
+        )
     }catch (err) {
         res.send(err)
     }
-}
+};
+
 module.exports = rentalsControllers

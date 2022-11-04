@@ -4,20 +4,23 @@ const {
 } = require('sequelize');
 const movies = require('./movies');
 module.exports = (sequelize, DataTypes) => {
-  class articles extends Model {
+  class Article extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      articles.hasOne(models.movies, {
-        foreingKey: 'id_article'
+      Article.belongsToMany(models.rentals, {
+        through : 'rentals_articles',
+        foreingKey:{
+          name: "id_article"
+        }
       })
-      // articles.belongsTo(models.movies)
+  
     }
   }
-  articles.init({
+  Article.init({
     id_article: {
       allowNull: false,
       autoIncrement: true,
@@ -37,6 +40,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'articles',
+      timestamps: false
     });
-  return articles;
+  return Article;
 };

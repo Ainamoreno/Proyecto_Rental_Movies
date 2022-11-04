@@ -4,7 +4,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
 
-    await queryInterface.bulkInsert('series', [
+    await queryInterface.bulkInsert('shows', [
       {
         id_serie: 1,
         next_episode: '2022-11-13',
