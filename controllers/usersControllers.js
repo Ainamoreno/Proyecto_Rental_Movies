@@ -2,6 +2,10 @@ const models = require('../models/index');
 const bcrypt = require('bcrypt');
 const jsonwebtoken = require("jsonwebtoken");
 const usersControllers = {};
+const {
+    assertEmailIsValid,
+    assertValidPasswordService
+} = require('../services/auth.service');
 
 usersControllers.getusers_1 = async (req, res) => {
     try {
@@ -74,10 +78,6 @@ usersControllers.loginUser = async (req, res) => {
     hashedPassword()
     const secret = "secretAAAHHhhaa56789";
 
-    // if (secret.length < 10) {
-    //     throw new Error("JWT_SECRET is not set");
-    // }
-
     const jwt = jsonwebtoken.sign({
         id_user: userFound.id_user,
         email: userFound.email,
@@ -89,34 +89,6 @@ usersControllers.loginUser = async (req, res) => {
     });
 }
 
-function assertValidPasswordService(pass) {
-    if (pass.length < 8) {
-        throw new Error("Password must be at least 8 characters long");
-    }
-    // validate it has one lower case letter
-    if (!pass.match(/[a-z]/)) {
-        throw new Error("Password must have at least one lower case letter");
-    }
-    // validate it has one upper case letter
-    if (!pass.match(/[A-Z]/)) {
-        throw new Error("Password must have at least one upper case letter");
-    }
-    // validate it has one number
-    if (!pass.match(/[0-9]/)) {
-        throw new Error("Password must have at least one number");
-    }
-};
-
-function assertEmailIsValid(email) {
-    // must validate a valid email
-    const emailRegex =
-        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    // return emailRegex.test(email);
-    const isValid = email.match(emailRegex);
-    if (!isValid) {
-        throw new Error("Email is invalid");
-    }
-}
 
 usersControllers.getusers_2 = async (req, res) => {
     try {

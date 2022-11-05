@@ -18,13 +18,19 @@ rentalsControllers.createRental = async (req, res) => {
         let mapRental = lastRental.map(rental => rental.dataValues)
         let idRent = mapRental.map(id => id.id_rental)
         let article = req.body;
-        let rentalArticle = await models.rentals_articles.create({
-            articleIdArticle: article.articleIdArticle,
-            id_rental: idRent[0]
-        })
+        let arrayArticles = article.articleIdArticle;
+        console.log(arrayArticles.length)
+        let rentalArticles = [];
+        for (let i = 0; i < arrayArticles.length; i++) {
+            let rentalArticle = await models.rentals_articles.create({
+                articleIdArticle: article.articleIdArticle[i],
+                id_rental: idRent[0]
+            })
+            rentalArticles.push(rentalArticle);
+        }
         res.send({
-            rentalArticle: rentalArticle,
-            Rental: lastRental
+            Rental: lastRental,
+            rentalArticles: rentalArticles
         })
     } catch (error) {
         res.send(error)
@@ -33,27 +39,27 @@ rentalsControllers.createRental = async (req, res) => {
 
 rentalsControllers.rentalsUser = async (req, res) => {
     let idUser = req.params;
-    let rentals = await models.rentals.findAll({
-        attributes: {
-            exclude: ['rentalIdRental', 'articleIdArticle', 'rentalsArticleIdRentalArticle']
-        },
-        where: { id_user: idUser.idUser }
-    })
 
-    let rents = rentals.map(rent => rent.dataValues)
-    let idRents = rents.map(id => id.id_rental)
-    let rentArt = await models.rentals_articles.findAll(
-        {
-            where: { id_rental: idRents },
-            include: {
-                model: models.articles,
-                attributes: ['id_article', 'name']
-            }
-        }
-    )
-    res.send(rentArt);
     try {
+        let rentals = await models.rentals.findAll({
+            attributes: {
+                exclude: ['rentalIdRental', 'articleIdArticle', 'rentalsArticleIdRentalArticle']
+            },
+            where: { id_user: idUser.idUser }
+        })
 
+        let rents = rentals.map(rent => rent.dataValues)
+        let idRents = rents.map(id => id.id_rental)
+        let rentArt = await models.rentals_articles.findAll(
+            {
+                where: { id_rental: idRents },
+                include: {
+                    model: models.articles,
+                    attributes: ['id_article', 'name']
+                }
+            }
+        )
+        res.send(rentArt);
     } catch (error) {
         res.send(error)
     }
@@ -102,19 +108,24 @@ rentalsControllers.modifRental = async (req, res) => {
 };
 
 rentalsControllers.allRentals = async (req, res) => {
-    let allRentals = await models.rentals.findAll();
-    let rents = allRentals.map(rent => rent.dataValues)
-    let idRents = rents.map(id => id.id_rental)
-    let allRents = await models.rentals_articles.findAll(
-        {
-            where: { id_rental: idRents },
-            include: {
-                model: models.articles,
-                attributes: ['id_article', 'name']
+    try {
+        let allRentals = await models.rentals.findAll();
+        let rents = allRentals.map(rent => rent.dataValues)
+        let idRents = rents.map(id => id.id_rental)
+        let allRents = await models.rentals_articles.findAll(
+            {
+                where: { id_rental: idRents },
+                include: {
+                    model: models.articles,
+                    attributes: ['id_article', 'name']
+                }
             }
-        }
-    )
-    res.send(allRents)
+        )
+        res.send(allRents)
+    } catch (error) {
+        res.send(error)
+    }
+
 }
 
 module.exports = rentalsControllers

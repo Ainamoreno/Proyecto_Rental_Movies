@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
       unique: true
     },
     photo: DataTypes.STRING,
-    score: DataTypes.DECIMAL,
+    score: DataTypes.DECIMAL(10,1),
     description: DataTypes.TEXT,
     data_premiere: DataTypes.DATEONLY,
     type: DataTypes.ENUM('Película', 'Serie')

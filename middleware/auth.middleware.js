@@ -3,7 +3,7 @@ const jsonwebtoken = require("jsonwebtoken");
 const authBearerMiddleware = async (req, res, next) => {
     const { authorization } = req.headers;   
     if(!authorization) {
-        res.status(401).json({ message: "Es necesario añadir el token de autorización" });
+        res.status(401).json({ message: "Necesitas realizar un login para acceder" });
     }
     const [strategy, jwt] = authorization.split(" ");
 

@@ -46,6 +46,48 @@ module.exports = {
         next_episode: '2022-11-14',
         permit: true,
         id_article: 16
+      },
+      {
+        id_serie: 8,
+        next_episode: '2022-11-12',
+        permit: true,
+        id_article: 19
+      },
+      {
+        id_serie: 9,
+        next_episode: '2022-11-16',
+        permit: false,
+        id_article: 21
+      },
+      {
+        id_serie: 10,
+        next_episode: '2022-11-17',
+        permit: false,
+        id_article: 30
+      },
+      {
+        id_serie: 11,
+        next_episode: '2022-11-14',
+        permit: false,
+        id_article: 31
+      },
+      {
+        id_serie: 12,
+        next_episode: '2022-11-17',
+        permit: false,
+        id_article: 32
+      },
+      {
+        id_serie: 13,
+        next_episode: '2022-11-17',
+        permit: false,
+        id_article: 33
+      },
+      {
+        id_serie: 14,
+        next_episode: '2022-11-17',
+        permit: false,
+        id_article: 34
       }
     ], {});
 

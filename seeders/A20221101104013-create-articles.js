@@ -149,10 +149,168 @@ module.exports = {
         data_premiere: '2022-08-24',
         type: 'Serie'
       },
-      
-      
-      
-
+      {
+        id_article: 17,
+        name: 'El extraño',
+        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/vYhPCfSDlLObeV5bUIkmeUyR4gl.jpg',
+        score: 6.1,
+        description: 'Mark y Henry crearán una fuerte relación de confianza luego de empezar a conversar al encontrarse en un autobús. Sin embargo, ninguno es quien parece ser, ambos cargan con secretos que pudiesen hundirlos.".',
+        data_premiere: '2022-10-06',
+        type: 'Película'
+      },
+      {
+        id_article: 18,
+        name: 'Coco',
+        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/lUZZhYLLDU4g4XGQ5tvjYNVytxc.jpg',
+        score: 8.2,
+        description: 'Un joven aspirante a músico llamado Miguel se embarca en un viaje extraordinario a la mágica tierra de sus ancestros. Allí, el encantador embaucador Héctor se convierte en su inesperado amigo y le ayuda a descubrir los misterios detrás de las historias y tradiciones de su familia.',
+        data_premiere: '2022-03-01',
+        type: 'Película'
+      },
+      {
+        id_article: 19,
+        name: 'La Reina del Sur',
+        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/uBTlJDdPpRxYTfUnKw4wbuIGSEK.jpg',
+        score: 7.8,
+        description: 'Teresa Mendoza comienza su aventura como una joven humilde enamorada de un piloto empleado por los Carteles mexicanos. Cuando ejecutan a su hombre Teresa tendrá que huir desesperada para no correr la misma suerte. Su escape la llevará al sur de España donde intentará comenzar una nueva vida. Tras varios golpes Teresa decide tomar las riendas de su destino y comienza a dirigir su propia organización. Mediante alianzas estratégicas y un agudo sentido para los negocios Teresa Mendoza “La Mexicana” controlará un negocio de distribución de drogas intercontinental como nunca se había visto.',
+        data_premiere: '2011-05-20',
+        type: 'Serie'
+      },
+      {
+        id_article: 20,
+        name: 'El espíritu de Bridge Hollow',
+        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/33UsqNX208UP6yoy35OFA6P32av.jpg',
+        score: 7.0,
+        description: 'Cuando un malvado espíritu ancestral hace que los adornos de Halloween cobren vida y siembren el caos, un padre (Marlon Wayans) y su hija adolescente (Priah Ferguson) no tienen más remedio que trabajar en equipo para salvar su ciudad.',
+        data_premiere: '2022-10-14',
+        type: 'Película'
+      },
+      {
+        id_article: 21,
+        name: 'The Peripheral',
+        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ccBe5BVeibdBEQU7l6P6BubajWV.jpg',
+        score: 8.3,
+        description: 'Atrapada en un pequeño pueblo de los Apalaches, jugar videojuegos es la única manera que una joven tiene para escapar de la rutina. Es tan buena jugadora, que una empresa le envía un nuevo sistema de videojuegos para que lo pruebe, pero tiene una sorpresa. Desbloquea sus sueños de encontrar un propósito, romance y glamour en lo que parece un juego, poniéndola a ella y su familia en peligro.',
+        data_premiere: '2022-10-14',
+        type: 'Serie'
+      },
+      {
+        id_article: 22,
+        name: 'Smile',
+        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/aw05OSgJFxsMiLAN0UQG2gCdTGY.jpg',
+        score: 6.8,
+        description: 'Tras presenciar un extraño y traumático incidente con un paciente, la doctora Rose Cotter (Sosie Bacon) comienza a experimentar sucesos aterradores que no puede explicar. A medida que un miedo sobrecogedor comienza a afectar a todos los aspectos de su vida, Rose se verá obligada a afrontar a su problemático pasado para sobrevivir y escapar de su terrorífica nueva realidad.',
+        data_premiere: '2022-09-30',
+        type: 'Película'
+      },
+      {
+        id_article: 23,
+        name: 'La chica salvaje',
+        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/zuAQbLrYLlRvz5fTzU9rMJwRXCp.jpg',
+        score: 7.7,
+        description: 'La historia de Kya, una niña abandonada que se crió hasta la edad adulta en los peligrosos pantanos de Carolina del Norte. Atraída por dos jóvenes de la ciudad, Kya se abre a un mundo nuevo y sorprendente; pero cuando uno de ellos es encontrado muerto, la comunidad inmediatamente la señala como la principal sospechosa',
+        data_premiere: '2022-09-30',
+        type: 'Película'
+      },
+      {
+        id_article: 24,
+        name: 'El robo a Mussolini',
+        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/kCdwjDILxVLG8LZKhXpjfQNUoeY.jpg',
+        score: 5.7,
+        description: 'En tiempos de guerra, una mujer milanesa forma una banda de marginados para organizar el complejo robo de un legendario tesoro de Benito Mussolini.',
+        data_premiere: '2022-10-26',
+        type: 'Película'
+      },
+      {
+        id_article: 25,
+        name: 'Super...¿quién?',
+        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9IO3a6pBom1gk2xahd7kijBzn5L.jpg',
+        score: 4.7,
+        description: 'Cedric (Philippe Lacheau) intenta ganarse la vida como actor, pero parece destinado al fracaso. No tiene dinero y su novia le ha dejado. Su padre, su hermana y sus mejores amigos tampoco dan un duro por él. Hasta que por fin consigue un papel protagonista: el del superhéroe "Badman". Se le presenta la oportunidad de salir de un pozo de desgracias y ganarse de nuevo el respeto de su padre. ¡Pero el destino tiene otros planes! Un día Cedric se marcha del rodaje a toda prisa sin quitarse el traje de superhéroe y tiene un accidente de tráfico. Se despierta con amnesia, convencido de que es un superhéroe y cree que tiene una misión. ¿Tiene lo que hay que tener para plantarle cara al mal, defender a los débiles y acabar con los malos? Uno no se convierte en héroe, y mucho menos en superhéroe, de la noche a la mañana... ¡Sobre todo alguien como Cedric!',
+        data_premiere: '2022-02-25',
+        type: 'Película'
+      },
+      {
+        id_article: 26,
+        name: 'Ainbo: La guerrera del Amazonas',
+        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/hJzYZ2jC5TqzCALiZZRqmqXXRZx.jpg',
+        score: 6.2,
+        description: 'Una niña nació y creció en la selva más profunda del Amazonas, Colonia, que descansa sobre el lomo del Espíritu Materno más poderoso del Amazonas, Turtle Motelo Mama. Un día descubre que su tierra natal está siendo amenazada y se da cuenta de que hay otros humanos en el mundo además de su gente. Mientras lucha por salvar su paraíso contra la codicia y la explotación de los niños, la tala y la minería ilegal, comienza a luchar para revertir esta destrucción y el mal inminente de Yucuruna, la oscuridad que vive en el Amazonas. Guiada por el espíritu de su madre, Ainbo está decidida a salvar su tierra y salvar a su gente antes de que sea demasiado tarde.',
+        data_premiere: '2021-02-25',
+        type: 'Película'
+      },
+      {
+        id_article: 27,
+        name: 'Mira cómo corren',
+        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9fOP1y2Y1li0KgQc1MPNch71Yq5.jpg',
+        score: 6.7,
+        description: 'Una niña nació y creció en la selva más profunda del Amazonas, Colonia, que descansa sobre el lomo del Espíritu Materno más poderoso del Amazonas, Turtle Motelo Mama. Un día descubre que su tierra natal está siendo amenazada y se da cuenta de que hay otros humanos en el mundo además de su gente. Mientras lucha por salvar su paraíso contra la codicia y la explotación de los niños, la tala y la minería ilegal, comienza a luchar para revertir esta destrucción y el mal inminente de Yucuruna, la oscuridad que vive en el Amazonas. Guiada por el espíritu de su madre, Ainbo está decidida a salvar su tierra y salvar a su gente antes de que sea demasiado tarde.',
+        data_premiere: '2021-02-25',
+        type: 'Película'
+      },
+      {
+        id_article: 28,
+        name: 'Hombres al borde de un ataque de nervios',
+        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9IiTNWohanK62otUDGoCvgx2mI7.jpg',
+        score: 5.2,
+        description: 'Siete hombres, de entre 17 y 70 años, muy distintos entre sí, aunque todos al borde de una crisis nerviosa, van a seguir una terapia de grupo en plena naturaleza. Este misterioso taller, "exclusivamente reservado para hombres", se supone que hace milagros. Primera sorpresa nada más llegar: ¡el animador es una mujer! Imprevisible y desconcertante, va a hacer todo lo posible para ayudarles a mejorar. Con o sin su consentimiento...',
+        data_premiere: '2019-05-25',
+        type: 'Película'
+      },
+      {
+        id_article: 29,
+        name: 'Esperando a Mister Bojangles',
+        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/l4giD7V9Nj62Y5JN8I5ZuaNbPQD.jpg',
+        score: 7.6,
+        description: 'Camille y Georges bailan continuamente con su canción preferida: "Mr. Bojangles". Con ellos, no hay lugar más que para el placer, la fantasía y los amigos. Hasta el día en que la madre va un paso más allá, obligando a Georges y su hijo Gary a hacer lo que sea para evitar lo inevitable, cueste lo que cueste.',
+        data_premiere: '2021-05-11',
+        type: 'Película'
+      },
+      {
+        id_article: 30,
+        name: 'American Horror Story',
+        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tiuzjuzalHj377XER1sfq7XQEIT.jpg',
+        score: 8.6,
+        description: 'American Horror Story es una serie antológica de televisión, creada y producida por Ryan Murphy y Brad Falchuk. Cada una de sus temporadas narra una trama independiente, ambientada en lugares diferentes y cerrando siempre la historia; donde muchos actores repiten, pero siempre interpretando personajes distintos.',
+        data_premiere: '2011-05-11',
+        type: 'Serie'
+      },
+      {
+        id_article: 31,
+        name: 'Los Simpson',
+        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/u8BMLmwoc7YPHKSWawOOqC1c8lJ.jpg',
+        score: 8.0,
+        description: 'Comedia americana de animación creada por Matt Groening para la compañía Fox. La serie es una parodia satírica del estilo de la clase media americana encarnada por una familia con ese mismo nombre, compuesta por Homer, Marge, Bart, Lisa, y Maggie Simpson. La trama se desarrolla en la ciudad ficticia de Springfield y parodia la cultura, la sociedad, la televisión estadounidense y muchos otros aspectos de la condición humana.',
+        data_premiere: '1989-05-04',
+        type: 'Serie'
+      },
+      {
+        id_article: 32,
+        name: 'Titanes',
+        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/t1wuU7nUxyAFpCep4epXIGP8dtJ.jpg',
+        score: 8.6,
+        description: 'Después de lanzarse a actuar por su cuenta, el excompañero de Batman se encuentra con una serie de jóvenes héroes con problemas que necesitan desesperadamente un mentor.',
+        data_premiere: '2018-05-11',
+        type: 'Serie'
+      },
+      {
+        id_article: 33,
+        name: 'El cuento de la criada',
+        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/fizWysTX7KN0xV1Khy92U3JnQkN.jpg',
+        score: 8.2,
+        description: 'Para enfrentarse a una tasa de natalidad en declive, un régimen fundamentalista ha empezado a tratar a las mujeres como propiedades. Como una de las pocas mujeres fértiles que quedan, Defred es una criada, una más de la casta de mujeres forzadas a una servidumbre sexual para intentar repoblar el mundo.',
+        data_premiere: '2017-09-24',
+        type: 'Serie'
+      },
+      {
+        id_article: 34,
+        name: 'Emmerdale',
+        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ualtuRRNYa9Fj61wSuBVcuvaVDP.jpg',
+        score: 4.0,
+        description: 'Telenovela británica ambientada en un pueblo ficticio de Yorkshire.',
+        data_premiere: '2021-05-11',
+        type: 'Serie'
+      }
     ], {});
 
   },
