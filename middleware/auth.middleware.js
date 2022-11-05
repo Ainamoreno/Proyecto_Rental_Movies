@@ -1,14 +1,17 @@
 const jsonwebtoken = require("jsonwebtoken");
 
 const authBearerMiddleware = async (req, res, next) => {
-    const { authorization } = req.headers;
+    const { authorization } = req.headers;   
+    if(!authorization) {
+        res.status(401).json({ message: "Es necesario añadir el token de autorización" });
+    }
     const [strategy, jwt] = authorization.split(" ");
+
     try {
         if (strategy.toLowerCase() !== "bearer") {
             throw new Error("Estrategia no válida");
         }
         const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET);
-        console.log(payload)
         req.auth = payload
         next();
     } catch (error) {

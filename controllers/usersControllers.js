@@ -33,8 +33,7 @@ usersControllers.postusers_1 = async (req, res) => {
         return;
     }
     try {
-        const myPlaintextPassword = body.password;
-        console.log(myPlaintextPassword)
+        const myPlaintextPassword = body.password
         bcrypt.genSalt(function async(err, salt) {
             bcrypt.hash(myPlaintextPassword, salt, async function (err, hash) {
                 const userCreated = await models.users.create(
@@ -67,7 +66,6 @@ usersControllers.loginUser = async (req, res) => {
         const loginPassword = password;
         bcrypt.compare(loginPassword, userFound.password, function (err, result) {
             if (!result) {
-                console.log(result)
                 res.status(401).json({ message: "La contraseña o el email son incorrectos" });
                 return;
             }
@@ -85,7 +83,6 @@ usersControllers.loginUser = async (req, res) => {
         email: userFound.email,
         id_rol: userFound.id_rol
     }, secret);
-    // console.log({email: userFound.email})
     res.send({
         message: "Login realizado correctamente",
         jwt: jwt,
@@ -135,7 +132,7 @@ usersControllers.getusers_2 = async (req, res) => {
     }
 };
 
-usersControllers.putusers_1 = async (req, res) => {
+usersControllers.updatedUser = async (req, res) => {
     try {
         let id = req.params.id;
         let user = req.body;
@@ -144,7 +141,7 @@ usersControllers.putusers_1 = async (req, res) => {
                 name: user.name,
                 email: user.email,
                 dateBirth: user.dateBirth,
-                phone: user.phone,
+                phone: user.phone
             },
             {
                 where: { id_user: id }

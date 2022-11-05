@@ -11,16 +11,17 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Rental.belongsToMany(models.articles, {
-        through : 'rentalsArticles',
+        through: 'rentals_articles',
         foreignKey: 'id_rental'
-      }) 
-      Rental.belongsTo(models.users,{
+      })
+      Rental.belongsTo(models.users, {
         foreignKey: {
           name: "id_user",
           allowNull: false
         }
       })
-    }     
+      // Rental.hasOne(models.rentals_articles);
+    }
   }
   Rental.init({
     id_rental: {

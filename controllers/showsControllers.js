@@ -5,7 +5,8 @@ const showsController = {};
 
 showsController.getshows_1 = async (req, res) => {
     try {
-        let resp = await models.shows.findAll({
+        let resp = await models.articles.findAll({
+            where: { type: 'Serie' },
             order: [
                 ["score", 'DESC']
             ]
@@ -22,7 +23,11 @@ showsController.getshows_2 = async (req, res) => {
         let id = req.params.id
         let resp = await models.shows.findAll(
             {
-                where: { id_serie: id }
+                where: { id_serie: id },
+                include: {
+                    model: models.articles,
+                    attributes: ['name', 'description']
+                }
             }
         )
         res.send(resp)
@@ -35,9 +40,12 @@ showsController.getshows_2 = async (req, res) => {
 showsController.getshows_3 = async (req, res) => {
     try {
         let name = req.params.name;
-        let resp = await models.shows.findAll(
+        let resp = await models.articles.findAll(
             {
-                where: { nameSerie: name }
+                where: {
+                    name: name,
+                    type: 'Serie'
+                }
             }
         )
         res.send(resp);
@@ -60,7 +68,11 @@ showsController.getshows_5 = async (req, res) => {
     try {
         let resp = await models.shows.findAll(
             {
-                where: { permit: true }
+                where: { permit: true },
+                include: {
+                    model: models.articles,
+                    attributes: ['name', 'description']
+                }
             }
         )
         res.send(resp);

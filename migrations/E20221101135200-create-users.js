@@ -27,6 +27,15 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      id_rol: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "rols",
+          key: "id_rol"
+        },
+        onDelete: 'cascade',
+        onUpdate: 'cascade'
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

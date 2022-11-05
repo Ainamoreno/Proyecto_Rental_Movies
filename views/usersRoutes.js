@@ -5,9 +5,9 @@ const { authBearerMiddleware, isValidRoleAdmin } = require('../middleware/auth.m
 
 router.get('/showUser', usersControllers.getusers_1);
 router.post('/createUser', usersControllers.postusers_1);
-router.post('/loginUser', authBearerMiddleware, usersControllers.loginUser);
+router.post('/loginUser', usersControllers.loginUser);
 router.get('/showLastUser', usersControllers.getusers_2);
-router.put('/modifUser/:id', usersControllers.putusers_1);
+router.put('/modifUser/:id', usersControllers.updatedUser);
 router.delete('/deleteUser', authBearerMiddleware, isValidRoleAdmin, usersControllers.deleteUsers);
 
 

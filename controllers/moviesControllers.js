@@ -30,7 +30,7 @@ moviesController.getMovies_2 = async (req, res) => {
             where: { id_movie: id },
             include: {
                 model: models.articles,
-                attributes: ['name']
+                attributes: ['name', 'description']
             }
 
         })
