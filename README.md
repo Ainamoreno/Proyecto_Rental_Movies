@@ -56,41 +56,31 @@ Consta de una carpeta de controllers (se encuentran los controlladores de pelíc
 
 Sin login:
 
-● Listado de películas top rated.
-
-● Obtener una película según su id.
-
-● Obtener una película por título.
-
-● Obtener películas con determinado género (indicando nombre, no id).
-
-● Obtener series top rated.
-
-● Obtener series por id.
-
-● Obtener series por título.
-
-● Obtener series que vayan a tener un capítulo emitido en los próximos 7 dias.
-
-● Obtener series que vayan a tener un pase en teatros o cines.
-
-● Dar de alta un usuario
+- Listado de películas top rated.
+- Obtener una película según su id.
+- Obtener una película por título.
+- Obtener películas con determinado género (indicando nombre, no id).
+- Obtener series top rated.
+- Obtener series por id.
+- Obtener series por título.
+- Obtener series que vayan a tener un capítulo emitido en los próximos 7 dias.
+- Obtener series que vayan a tener un pase en teatros o cines.
+- Dar de alta un usuario
 
 Con login:
 
-● Traer datos de perfil de usuario
+- Traer datos de perfil de usuario
+- Modificar datos de perfil de usuario
+- Generar un nuevo pedido
 
-● Modificar datos de perfil de usuario
+(En los seeders no hay realizado ningún préstamo, por lo tanto, para poder realizar los siguientes endpoints hay que realizar alguno mediante postman. Para poder realizarlos, hay que tener el login hecho y añadir el token en el header. En el body hay que añadir el email y un array de articulos. Es importante añadir el array, ya que en caso de querer hacer un préstamo de varios articulos también es posible.)
 
-● Generar un nuevo pedido
+- Modificar datos de un pedido
+- Listar todos los pedidos de un usuario
 
-● Modificar datos de un pedido
-
-● Listar todos los pedidos de un usuario
-
+(Añadiendo el email en el body y el id en el endpint para verificar que únicamente ves tus préstamos, se listan todos tus articulos)
 
 Con login y que sean administradores: 
 
-● Listar todos los pedidos hechos en la aplicación (sólo puede realizarlo el admin)
-
-● Borrar un usuario (sólo puede realizarlo el admin)
+- Listar todos los pedidos hechos en la aplicación (sólo puede realizarlo el admin)
+- Borrar un usuario (sólo puede realizarlo el admin)
