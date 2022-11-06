@@ -72,7 +72,7 @@ usersControllers.loginUser = async (req, res) => {
             if (!result) {
                 return res.send({ message: "La contraseña o el email son incorrectos" });
             } else {
-                const secret = "secretAAAHHhhaa56789";
+                const secret = process.env.JWT_SECRET || '';
                 const jwt = jsonwebtoken.sign({
                     id_user: userFound.id_user,
                     email: userFound.email,

@@ -7,16 +7,17 @@ module.exports = {
     await queryInterface.bulkInsert('users', [
       {
         id_user: 1,
-        name: "Aina Moreno Carceller",
-        email: "aina@gmail.com",
-        dateBirth: "1998-07-19",
-        phone: "223345586",
-        password: "$2b$10$YuDsAypextct/A112PbLqO7UBPm0UHPONG5lq7/pgZTsPRxxrbWmK",
+        name: "Paola Pérez Mendoza",
+        email: "paola22@gmail.com",
+        dateBirth: "1997-03-02",
+        phone: "228297484",
+        password: "$2b$10$EpPJ4oHJyQRZH1s4TEjOHeiPNu8tuiUEO9HiS6/mL/XpaXFjlHQdW",
         id_rol: 2,
         updatedAt: date,
         createdAt: date
-    },
-    {
+      },
+      // Password de Paola Pérez Mendoza: aa34Bbfh6
+      {
         id_user: 2,
         name: "Alicia Gómez Esteve",
         email: "alicia55@gmail.com",
@@ -26,8 +27,8 @@ module.exports = {
         id_rol: 2,
         updatedAt: date,
         createdAt: date
-    },
-    {
+      },
+      {
         id_user: 3,
         name: "Jesús García Crescencio",
         email: "jesus55@gmail.com",
@@ -37,8 +38,8 @@ module.exports = {
         id_rol: 2,
         updatedAt: date,
         createdAt: date
-    },
-    {
+      },
+      {
         id_user: 4,
         name: "Lola Martorell Pérez",
         email: "lola2@gmail.com",
@@ -48,8 +49,8 @@ module.exports = {
         id_rol: 2,
         updatedAt: date,
         createdAt: date
-    },
-    {
+      },
+      {
         id_user: 5,
         name: "Lola Martínez",
         email: "lola45@gmail.com",
@@ -59,8 +60,8 @@ module.exports = {
         id_rol: 1,
         updatedAt: date,
         createdAt: date
-    }
-    // Password de Lola Martínez: aa55bAb64
+      }
+      // Password de Lola Martínez: aa55bAb64
     ], {});
   },
 
