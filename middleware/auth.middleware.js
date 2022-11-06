@@ -6,14 +6,15 @@ const authBearerMiddleware = async (req, res, next) => {
         res.status(401).json({ message: "Necesitas realizar un login para acceder" });
     }
     const [strategy, jwt] = authorization.split(" ");
-
+    console.log(strategy, jwt)
     try {
         if (strategy.toLowerCase() !== "bearer") {
             throw new Error("Estrategia no válida");
         }
         const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET);
+        const created = payload.created;
         const timeElapsed = Date.now() - created;
-        const MAX_TIME = 3600
+        const MAX_TIME = 36000
         const isValid = timeElapsed && created && MAX_TIME &&
             (timeElapsed < MAX_TIME);
 

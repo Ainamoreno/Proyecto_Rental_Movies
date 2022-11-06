@@ -22,9 +22,9 @@ rentalsControllers.createRental = async (req, res) => {
             let article = req.body;
             let arrayArticles = article.articleIdArticle;
             let rentalArticles = [];
-            for (let i = 0; i < arrayArticles.length; i++) {
+            for (art of arrayArticles) {
                 let rentalArticle = await models.rentals_articles.create({
-                    articleIdArticle: article.articleIdArticle[i],
+                    articleIdArticle: art,
                     id_rental: idRent[0]
                 })
                 rentalArticles.push(rentalArticle);
@@ -45,7 +45,6 @@ rentalsControllers.rentalsUser = async (req, res) => {
     let idUser = req.params;
     try {
         const { email } = req.body
-        console.log(email, idUser)
         const userFound = await models.users.findAll({ where: { email: email } })
         let mapUser = userFound.map(user => user.dataValues)
         let objectUser = mapUser.map(id => id.id_user)
