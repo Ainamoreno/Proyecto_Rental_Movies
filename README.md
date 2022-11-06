@@ -21,6 +21,7 @@ Consta de 7 tablas (películas, series, articulos, alquileres_articulos, alquile
 - Añadimos al archivo .config los datos de la bbdd que se adjunta con el proyecto.
 
 - Renombramos el archivo '.env.example' a '.env' y añadimos los datos correspondientes que adjunto en el .txt y añadimos en JWT_SECRET el string que deseemos.
+- Desde el Workbench accedemos a la conexión de Mysql y creamos la base de datos con : ```create database railway```
 
 - Para crear las tablas: entrar en el archivo index.js y en la línea 21 cambiar el ```db.authenticate()``` por:
 
@@ -31,6 +32,10 @@ Consta de 7 tablas (películas, series, articulos, alquileres_articulos, alquile
 - Volvemos al index.js y ```sequelize.sync({force: true})``` lo cambiamos por:
 ```db.authenticate()```
 - Para crear los registros: 
-```sequelize db:seed:all```
+```npx sequelize-cli db:seed:all ```
+
+### Funciones para realizar con la API
+
+
 
 
