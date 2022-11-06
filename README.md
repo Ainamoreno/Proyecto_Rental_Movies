@@ -36,6 +36,45 @@ Consta de 7 tablas (películas, series, articulos, alquileres_articulos, alquile
 
 ### Funciones para realizar con la API
 
+Podemos importar la colección que he realizado en Postman desde este link: 'https://www.postman.com/collections/d09b3ee8be7d8ebf0e84'
+
+### Tecnologías utilizadas
+
+**Bcrypt**: para encriptar las contraseñas
+
+**Express**: Entorno de trabajo que nos permite realizar la bbdd y la API junto con otras tecnologías.
+
+**JsonWebToken**: para generar tokens
+
+**Sequelize**: para poder gestionar y manipular la bbdd (ORM)
+
+### Estructura del proyecto
+
+Consta de una carpeta de controllers (se encuentran los controlladores de películas, series, usuarios y préstamos), middleware (donde se encuentran los middleware de autentificación), migrations y seeders (migraciones de las tablas y los registros de cada una de las tablas), models (los modelos de todas las tablas), services (los servicios de autentificación), views (las rutas y endpoints de películas, series, usuarios y préstamos), archivo de router.js e index.js.
+
+### Endpoints que se pueden realizar:
+
+Sin login:
+
+● Listado de películas top rated.
+● Obtener una película según su id.
+● Obtener una película por título.
+● Obtener películas con determinado género (indicando nombre, no id).
+● Obtener series top rated.
+● Obtener series por id.
+● Obtener series por título.
+● Obtener series que vayan a tener un capítulo emitido en los próximos 7 dias.
+● Obtener series que vayan a tener un pase en teatros o cines.
+● Dar de alta un usuario
+
+Con login:
+● Traer datos de perfil de usuario
+● Modificar datos de perfil de usuario
+● Generar un nuevo pedido
+● Modificar datos de un pedido
+● Listar todos los pedidos de un usuario
 
 
-
+Con login y que sean administradores: 
+● Listar todos los pedidos hechos en la aplicación (sólo puede realizarlo el admin)
+● Borrar un usuario (sólo puede realizarlo el admin)
