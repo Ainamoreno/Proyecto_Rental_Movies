@@ -4,7 +4,7 @@ const jsonwebtoken = require("jsonwebtoken");
 const usersControllers = {};
 const {
     assertEmailIsValid,
-    assertValidPasswordService
+    assertValidPasswordService,
 } = require('../services/auth.service');
 
 usersControllers.getusers_1 = async (req, res) => {
@@ -106,7 +106,7 @@ usersControllers.showUser = async (req, res) => {
             })
             res.send(user)
         } else {
-            res.send({ message: 'Estás intentado realizar un pedido que no corresponde a tu email' })
+            res.send({ message: 'Estás intentado realizar un búsqueda que no coincide al id de la ruta' })
         }
 
     } catch (err) {
@@ -138,7 +138,7 @@ usersControllers.updatedUser = async (req, res) => {
                 message: 'Usuario actualizado correctamente'
             })
         } else {
-            res.send({ message: 'Estás intentado realizar un pedido que no corresponde a tu email' })
+            res.send({ message: 'Estás intentado realizar un modificación que no corresponde a tu perfil en la ruta' })
         }
 
     } catch (err) {

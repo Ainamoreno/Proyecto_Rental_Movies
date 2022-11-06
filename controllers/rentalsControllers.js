@@ -34,7 +34,7 @@ rentalsControllers.createRental = async (req, res) => {
                 rentalArticles: rentalArticles
             })
         } else {
-            res.send({ message: 'Estás intentado realizar un acceder a los datos de un usuario que no corresponde al tuyo' })
+            res.send({ message: 'Estás intentado realizar un préstamo de un id (según la ruta) que no corresponde al de tu perfil' })
         }
     } catch (error) {
         res.send(error)
@@ -73,7 +73,7 @@ rentalsControllers.rentalsUser = async (req, res) => {
             )
             res.send(rentArt);
         } else {
-            res.send({ message: 'Estás intentado visualizar los pedidos que no corresponde a tu email' })
+            res.send({ message: 'Estás intentado visualizar los pedidos que no corresponde a tu email (según la ruta)' })
         }
 
     } catch (error) {

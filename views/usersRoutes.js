@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const usersControllers = require('../controllers/usersControllers');
-const { authBearerMiddleware, isValidRoleAdmin } = require('../middleware/auth.middleware')
+const { authBearerMiddleware, isValidRoleAdmin, validUser } = require('../middleware/auth.middleware')
 
 router.get('/showUser', usersControllers.getusers_1);
 router.post('/createUser', usersControllers.postusers_1);
 router.post('/loginUser', usersControllers.loginUser);
-router.get('/showYourUser/:id', authBearerMiddleware, usersControllers.showUser);
-router.put('/modifUser/:id', authBearerMiddleware, usersControllers.updatedUser);
-router.delete('/deleteUser', authBearerMiddleware, isValidRoleAdmin, usersControllers.deleteUsers);
+router.get('/showYourUser/:id', authBearerMiddleware, validUser, usersControllers.showUser);
+router.put('/modifUser/:id', authBearerMiddleware, validUser, usersControllers.updatedUser);
+router.delete('/deleteUser', authBearerMiddleware, validUser, isValidRoleAdmin, usersControllers.deleteUsers);
 
 
 module.exports = router

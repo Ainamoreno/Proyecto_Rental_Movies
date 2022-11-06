@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const rentalsControllers = require('../controllers/rentalsControllers');
-const { authBearerMiddleware, isValidRoleAdmin } = require('../middleware/auth.middleware');
+const { authBearerMiddleware, isValidRoleAdmin, validUser } = require('../middleware/auth.middleware');
 
-router.post('/createRental/:id',authBearerMiddleware, rentalsControllers.createRental );
-router.get('/rentalsUser/:idUser', authBearerMiddleware, rentalsControllers.rentalsUser );
-router.get('/modifRental/:idUser/:idRental', authBearerMiddleware, rentalsControllers.modifRental );
-router.get('/allRentals',authBearerMiddleware, isValidRoleAdmin, rentalsControllers.allRentals );
+router.post('/createRental/:id',authBearerMiddleware, validUser, rentalsControllers.createRental );
+router.get('/rentalsUser/:idUser', authBearerMiddleware, validUser, rentalsControllers.rentalsUser );
+router.get('/modifRental/:idUser/:idRental', authBearerMiddleware, validUser, rentalsControllers.modifRental );
+router.get('/allRentals',authBearerMiddleware, isValidRoleAdmin, validUser, rentalsControllers.allRentals );
 
 module.exports = router
