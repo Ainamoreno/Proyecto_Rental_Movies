@@ -1,8 +1,8 @@
 const jsonwebtoken = require("jsonwebtoken");
 
 const authBearerMiddleware = async (req, res, next) => {
-    const { authorization } = req.headers;   
-    if(!authorization) {
+    const { authorization } = req.headers;
+    if (!authorization) {
         res.status(401).json({ message: "Necesitas realizar un login para acceder" });
     }
     const [strategy, jwt] = authorization.split(" ");
@@ -12,6 +12,14 @@ const authBearerMiddleware = async (req, res, next) => {
             throw new Error("Estrategia no válida");
         }
         const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET);
+        const timeElapsed = Date.now() - created;
+        const MAX_TIME = 3600
+        const isValid = timeElapsed && created && MAX_TIME &&
+            (timeElapsed < MAX_TIME);
+
+        if (!isValid) {
+            throw new Error("El token ha expirado");
+        }
         req.auth = payload
         next();
     } catch (error) {
@@ -28,4 +36,4 @@ const isValidRoleAdmin = (req, res, next) => {
     }
 }
 
-module.exports = {authBearerMiddleware, isValidRoleAdmin};
+module.exports = { authBearerMiddleware, isValidRoleAdmin };

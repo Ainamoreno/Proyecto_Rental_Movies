@@ -63,42 +63,51 @@ usersControllers.loginUser = async (req, res) => {
     const { email, password } = req.body;
     const userFound = await models.users.findOne({ where: { email: email } });
     if (!userFound) {
-        res.status(404).json({ message: "La contraseña o el email son incorrectos" })
-        return;
+        return res.status(404).json({ message: "La contraseña o el email son incorrectos" })
     }
     const hashedPassword = () => {
         const loginPassword = password;
         bcrypt.compare(loginPassword, userFound.password, function (err, result) {
+
             if (!result) {
-                res.status(401).json({ message: "La contraseña o el email son incorrectos" });
-                return;
+                return res.send({ message: "La contraseña o el email son incorrectos" });
+            } else {
+                const secret = "secretAAAHHhhaa56789";
+                const jwt = jsonwebtoken.sign({
+                    id_user: userFound.id_user,
+                    email: userFound.email,
+                    id_rol: userFound.id_rol
+                }, secret);
+                return res.send({
+                    message: "Login realizado correctamente",
+                    jwt: jwt,
+                });
             }
         });
     }
     hashedPassword()
-    const secret = "secretAAAHHhhaa56789";
 
-    const jwt = jsonwebtoken.sign({
-        id_user: userFound.id_user,
-        email: userFound.email,
-        id_rol: userFound.id_rol
-    }, secret);
-    res.send({
-        message: "Login realizado correctamente",
-        jwt: jwt,
-    });
+
 }
 
 
-usersControllers.getusers_2 = async (req, res) => {
+
+usersControllers.showUser = async (req, res) => {
+    let id = req.params;
+    const { email } = req.body
     try {
-        let resp = await models.users.findAll()
-        let users = resp.map(users => users.id_user)
-        let ultimoId = users[users.length - 1]
-        let user = await models.users.findOne({
-            where: { id_user: ultimoId }
-        })
-        res.send(user)
+        const userFound = await models.users.findAll({ where: { email: email } })
+        let mapUser = userFound.map(user => user.dataValues)
+        let objectUser = mapUser.map(id => id.id_user)
+        if (Number(id.id) === objectUser[0]) {
+            let user = await models.users.findOne({
+                where: { email: email }
+            })
+            res.send(user)
+        } else {
+            res.send({ message: 'Estás intentado realizar un pedido que no corresponde a tu email' })
+        }
+
     } catch (err) {
         res.send(err)
     }
@@ -108,21 +117,29 @@ usersControllers.updatedUser = async (req, res) => {
     try {
         let id = req.params.id;
         let user = req.body;
-        let resp = await models.users.update(
-            {
-                name: user.name,
-                email: user.email,
-                dateBirth: user.dateBirth,
-                phone: user.phone
-            },
-            {
-                where: { id_user: id }
-            }
-        )
-        res.send({
-            resp: resp,
-            message: 'Usuario actualizado correctamente'
-        })
+        const userFound = await models.users.findAll({ where: { email: user.email } })
+        let mapUser = userFound.map(user => user.dataValues)
+        let objectUser = mapUser.map(id => id.id_user)
+        if (Number(id) === objectUser[0]) {
+            let resp = await models.users.update(
+                {
+                    name: user.name,
+                    email: user.email,
+                    dateBirth: user.dateBirth,
+                    phone: user.phone
+                },
+                {
+                    where: { id_user: id }
+                }
+            )
+            res.send({
+                resp: resp,
+                message: 'Usuario actualizado correctamente'
+            })
+        } else {
+            res.send({ message: 'Estás intentado realizar un pedido que no corresponde a tu email' })
+        }
+
     } catch (err) {
         res.send(err)
     }
@@ -144,4 +161,3 @@ usersControllers.deleteUsers = async (req, res) => {
     }
 }
 module.exports = usersControllers
-

@@ -3,6 +3,7 @@ const models = require('../models/index');
 const rentalsControllers = {};
 
 rentalsControllers.createRental = async (req, res) => {
+    let id = req.params
     try {
         const { email } = req.body
         const userFound = await models.users.findAll({ where: { email: email } })
@@ -13,25 +14,28 @@ rentalsControllers.createRental = async (req, res) => {
                 id_user: objectUser[0]
             }
         )
-        let idRental = rental.dataValues.id_rental;
-        const lastRental = await models.rentals.findAll({ where: { id_rental: idRental } })
-        let mapRental = lastRental.map(rental => rental.dataValues)
-        let idRent = mapRental.map(id => id.id_rental)
-        let article = req.body;
-        let arrayArticles = article.articleIdArticle;
-        console.log(arrayArticles.length)
-        let rentalArticles = [];
-        for (let i = 0; i < arrayArticles.length; i++) {
-            let rentalArticle = await models.rentals_articles.create({
-                articleIdArticle: article.articleIdArticle[i],
-                id_rental: idRent[0]
+        if (Number(id.id) === objectUser[0]) {
+            let idRental = rental.dataValues.id_rental;
+            const lastRental = await models.rentals.findAll({ where: { id_rental: idRental } })
+            let mapRental = lastRental.map(rental => rental.dataValues)
+            let idRent = mapRental.map(id => id.id_rental)
+            let article = req.body;
+            let arrayArticles = article.articleIdArticle;
+            let rentalArticles = [];
+            for (let i = 0; i < arrayArticles.length; i++) {
+                let rentalArticle = await models.rentals_articles.create({
+                    articleIdArticle: article.articleIdArticle[i],
+                    id_rental: idRent[0]
+                })
+                rentalArticles.push(rentalArticle);
+            }
+            res.send({
+                Rental: lastRental,
+                rentalArticles: rentalArticles
             })
-            rentalArticles.push(rentalArticle);
+        } else {
+            res.send({ message: 'Estás intentado realizar un acceder a los datos de un usuario que no corresponde al tuyo' })
         }
-        res.send({
-            Rental: lastRental,
-            rentalArticles: rentalArticles
-        })
     } catch (error) {
         res.send(error)
     }
@@ -39,31 +43,43 @@ rentalsControllers.createRental = async (req, res) => {
 
 rentalsControllers.rentalsUser = async (req, res) => {
     let idUser = req.params;
-
     try {
-        let rentals = await models.rentals.findAll({
-            attributes: {
-                exclude: ['rentalIdRental', 'articleIdArticle', 'rentalsArticleIdRentalArticle']
-            },
-            where: { id_user: idUser.idUser }
-        })
-
-        let rents = rentals.map(rent => rent.dataValues)
-        let idRents = rents.map(id => id.id_rental)
-        let rentArt = await models.rentals_articles.findAll(
+        const { email } = req.body
+        console.log(email, idUser)
+        const userFound = await models.users.findAll({ where: { email: email } })
+        let mapUser = userFound.map(user => user.dataValues)
+        let objectUser = mapUser.map(id => id.id_user)
+        let rental = await models.rentals.create(
             {
-                where: { id_rental: idRents },
-                include: {
-                    model: models.articles,
-                    attributes: ['id_article', 'name']
-                }
+                id_user: objectUser[0]
             }
         )
-        res.send(rentArt);
+        if (Number(idUser.idUser) === objectUser[0]) {
+            let rentals = await models.rentals.findAll({
+                attributes: {
+                    exclude: ['rentalIdRental', 'articleIdArticle', 'rentalsArticleIdRentalArticle']
+                },
+                where: { id_user: idUser.idUser }
+            })
+            let rents = rentals.map(rent => rent.dataValues)
+            let idRents = rents.map(id => id.id_rental)
+            let rentArt = await models.rentals_articles.findAll(
+                {
+                    where: { id_rental: idRents },
+                    include: {
+                        model: models.articles,
+                        attributes: ['id_article', 'name']
+                    }
+                }
+            )
+            res.send(rentArt);
+        } else {
+            res.send({ message: 'Estás intentado visualizar los pedidos que no corresponde a tu email' })
+        }
+
     } catch (error) {
         res.send(error)
     }
-
 };
 
 rentalsControllers.modifRental = async (req, res) => {

@@ -82,5 +82,4 @@ moviesController.getMovies_4 = async (req, res) => {
 
 };
 
-
 module.exports = moviesController
