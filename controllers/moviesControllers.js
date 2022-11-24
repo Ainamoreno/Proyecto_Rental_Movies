@@ -20,6 +20,23 @@ moviesController.getMovies_1 = async (req, res) => {
 
 };
 
+moviesController.allArticles = async (req, res) => {
+    try {
+        let resp = await models.articles.findAll({
+            attributes: {
+                exclude: ['createdAt', 'updatedAt', 'articleIdArticle' ]
+            },
+            order: [
+                ["score", 'DESC']
+            ],
+        })
+        res.send(resp);
+    } catch (err) {
+        res.send(err)
+    }
+
+};
+
 moviesController.getMovies_2 = async (req, res) => {
     try {
         let id = req.params.id

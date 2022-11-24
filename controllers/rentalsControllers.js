@@ -14,7 +14,7 @@ rentalsControllers.createRental = async (req, res) => {
                 id_user: objectUser[0]
             }
         )
-        if (Number(id.id) === objectUser[0]) {
+       
             let idRental = rental.dataValues.id_rental;
             const lastRental = await models.rentals.findAll({ where: { id_rental: idRental } })
             let mapRental = lastRental.map(rental => rental.dataValues)
@@ -29,13 +29,16 @@ rentalsControllers.createRental = async (req, res) => {
                 })
                 rentalArticles.push(rentalArticle);
             }
+
+            let idArticle = rentalArticles[0].articleIdArticle
+            let movieRent = await models.articles.findOne({where:{id_article: idArticle }})
+
             res.send({
                 Rental: lastRental,
-                rentalArticles: rentalArticles
+                rentalArticles: rentalArticles,
+                movieRent: movieRent
             })
-        } else {
-            res.send({ message: 'Estás intentado realizar un préstamo de un id (según la ruta) que no corresponde al de tu perfil' })
-        }
+        
     } catch (error) {
         res.send(error)
     }

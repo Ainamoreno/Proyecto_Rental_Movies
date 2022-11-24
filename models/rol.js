@@ -12,20 +12,21 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Rol.hasMany(models.users, {
         foreignKey: {
-          name: "id_rol",
-          allowNull: false
+          name: "name_rol",
+          defaultValue: 'Usuario'
         }
       })
     }
   }
   Rol.init({
-    id_rol: {
-      allowNull: false,
-      autoIncrement: true,
+    name_rol: {
       primaryKey: true,
-      type: DataTypes.INTEGER
+      type: DataTypes.STRING,
+      defaultValue: 'Usuario'
     },
-    nameRol: DataTypes.STRING
+    id_rol: {
+      type:DataTypes.STRING,
+    }
   },
     {
       sequelize,

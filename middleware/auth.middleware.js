@@ -49,7 +49,7 @@ const validUser = async (req, res, next) => {
 };
 
 const isValidRoleAdmin = (req, res, next) => {
-    if (req.auth?.id_rol === 1) {
+    if (req.auth?.name_rol === 'Administrador') {
         next();
     } else {
         res.status(403).json({ message: "No estás autorizado" });

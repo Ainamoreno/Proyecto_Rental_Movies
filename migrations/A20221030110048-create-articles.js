@@ -18,6 +18,7 @@ module.exports = {
       description: Sequelize.TEXT,
       data_premiere: Sequelize.DATEONLY,
       type: Sequelize.ENUM('Película', 'Serie'),
+      price: Sequelize.DECIMAL(10,2)
     });
   },
   async down(queryInterface, Sequelize) {

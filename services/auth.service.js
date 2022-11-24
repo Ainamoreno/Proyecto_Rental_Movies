@@ -30,6 +30,7 @@ function assertEmailIsValid(email) {
     }
 };
 
+
 module.exports = {
     assertValidPasswordService,
     assertEmailIsValid

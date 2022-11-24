@@ -12,7 +12,7 @@ module.exports = {
         dateBirth: "1997-03-02",
         phone: "228297484",
         password: "$2b$10$EpPJ4oHJyQRZH1s4TEjOHeiPNu8tuiUEO9HiS6/mL/XpaXFjlHQdW",
-        id_rol: 2,
+        name_rol: 'Usuario',
         updatedAt: date,
         createdAt: date
       },
@@ -24,7 +24,7 @@ module.exports = {
         dateBirth: "2000-11-26",
         phone: "223353556",
         password: "$2b$10$iQA2uDcLKmLnyXzdnW5yXe6tlbuFg58Y9aUPq2ZDnujJ4fTOCe0me",
-        id_rol: 2,
+        name_rol: 'Usuario',
         updatedAt: date,
         createdAt: date
       },
@@ -35,7 +35,7 @@ module.exports = {
         dateBirth: "1995-05-24",
         phone: "648342986",
         password: "$2b$10$6bOl8qV.gJmSqqOHtN7fwuLQItdGsOVBJtbFo2CkZh.VIg8TvLkI.",
-        id_rol: 2,
+        name_rol: 'Usuario',
         updatedAt: date,
         createdAt: date
       },
@@ -46,7 +46,7 @@ module.exports = {
         dateBirth: "1990-03-19",
         phone: "223001986",
         password: "$2b$10$4AxpsQ8n4UTzPSHVbXxGxef6XFE/rkx3PSqNd7D0SSLHQvEb.n4lO",
-        id_rol: 2,
+        name_rol: 'Usuario',
         updatedAt: date,
         createdAt: date
       },
@@ -57,7 +57,7 @@ module.exports = {
         dateBirth: "1999-12-02",
         phone: "223001886",
         password: "$2b$10$4iSr2Cdb9sDro.bbifbPnuLVhWnOgH2PeUhONx4rZBF/2LGYyHEOy",
-        id_rol: 1,
+        name_rol: 'Administrador',
         updatedAt: date,
         createdAt: date
       }
