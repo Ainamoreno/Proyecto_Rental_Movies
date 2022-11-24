@@ -69,6 +69,8 @@ Sin login:
 
 Con login:
 
+**Una vez realizado el login, en los siguientes endpoints se verifica que en la ruta se añada el id correspondiente del usuario que añade el email en el body y además se verifica que corresponda con el id del token añadido al header. Importante para que las consultas se lleven a cabo satisfactoriamente**
+
 - Traer datos de perfil de usuario
 - Modificar datos de perfil de usuario
 - Generar un nuevo pedido
