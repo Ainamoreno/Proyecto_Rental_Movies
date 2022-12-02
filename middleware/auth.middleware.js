@@ -41,7 +41,11 @@ const validUser = async (req, res, next) => {
     const userFound = await models.users.findAll({ where: { email: body.email } })
     let mapUser = userFound.map(user => user.dataValues)
     let objectUser = mapUser.map(id => id.id_user)
+    console.log(payload.id_user)
+    console.log(body)
+    console.log(objectUser[0])
     if (payload.id_user === objectUser[0] ) {
+       
         next()
     }else {
         res.send({message: "El id del token no coincide con el tuyo"})

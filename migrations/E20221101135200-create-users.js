@@ -16,9 +16,6 @@ module.exports = {
         type: Sequelize.STRING,
         unique: true
       },
-      dateBirth: {
-        type: Sequelize.DATEONLY
-      } ,
       phone: {
         type: Sequelize.STRING,
         unique: true

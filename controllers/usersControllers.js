@@ -15,58 +15,64 @@ usersControllers.getusers_1 = async (req, res) => {
     res.send(err);
   }
 };
-
+usersControllers.showAllUsers = async (req, res) => {
+  const allUsers = await models.users.findAll();
+  res.send(allUsers)
+};
 usersControllers.postusers_1 = async (req, res) => {
-    const {email} = req.body
+  const { email } = req.body;
   const body = req.body;
   // Makes sure that the email is unique
-  const existingMail = await models.users.findOne({where: { email: email }});
+  const existingMail = await models.users.findOne({ where: { email: email } });
   if (existingMail) {
     return res.send("Este e-mail ya ha sido registrado");
-  }else{
-   // validate password
-  try {
-    assertValidPasswordService(body.password);
-  } catch (error) {
-    console.error(error);
-    res.status(400).json({ message: "Invalid password: " + error.message });
-    return;
-  }
-  // validate email is valid
-  try {
-    assertEmailIsValid(body.email);
-  } catch (error) {
-    console.error(error);
-    res.status(400).json({ message: "Email is invalid: " + error.message });
-    return;
-  }
+  } else {
+    // validate password
+    try {
+      assertValidPasswordService(body.password);
+    } catch (error) {
+      console.error(error);
+      res.status(400).json({ message: "Invalid password: " + error.message });
+      return;
+    }
+    // validate email is valid
+    try {
+      assertEmailIsValid(body.email);
+    } catch (error) {
+      console.error(error);
+      res.status(400).json({ message: "Email is invalid: " + error.message });
+      return;
+    }
 
-  try {
-    const myPlaintextPassword = body.password;
-    bcrypt.genSalt(function async(err, salt) {
-      bcrypt.hash(myPlaintextPassword, salt, async function (err, hash) {
-        const userCreated = await models.users.create({
-          name: body.name,
-          email: body.email,
-          dateBirth: body.dateBirth,
-          phone: body.phone,
-          password: hash,
-          name_rol: body.name_rol,
+    try {
+      const myPlaintextPassword = body.password;
+      bcrypt.genSalt(function async(err, salt) {
+        bcrypt.hash(myPlaintextPassword, salt, async function (err, hash) {
+          const userCreated = await models.users.create({
+            name: body.name,
+            email: body.email,
+            phone: body.phone,
+            password: hash,
+            name_rol: body.name_rol,
+          });
+          // res.send(`Usuario ${body.email} ya creado`)
+          res.send(userCreated);
         });
-        // res.send(`Usuario ${body.email} ya creado`)
-        res.send(userCreated);
       });
-    });
-  } catch (err) {
-    res.send(err);
+    } catch (err) {
+      res.send(err);
+    }
   }
-}; 
-  }
-  
+};
 
 usersControllers.loginUser = async (req, res) => {
   const { email, password } = req.body;
+
+  // let mapUser = allUsers.map((user) => user.dataValues);
+  // let objectUser = mapUser.map((email) => email.email);
+  // console.log(objectUser);
   const userFound = await models.users.findOne({ where: { email: email } });
+
   if (!userFound) {
     return res
       .status(404)
@@ -126,35 +132,43 @@ usersControllers.showUser = async (req, res) => {
 
 usersControllers.updatedUser = async (req, res) => {
   try {
-    let id = req.params.id;
     let user = req.body;
+
     const userFound = await models.users.findAll({
       where: { email: user.email },
     });
+    console.log("aqui", userFound);
     let mapUser = userFound.map((user) => user.dataValues);
     let objectUser = mapUser.map((id) => id.id_user);
-    if (Number(id) === objectUser[0]) {
-      let resp = await models.users.update(
-        {
-          name: user.name,
-          email: user.email,
-          dateBirth: user.dateBirth,
-          phone: user.phone,
-        },
-        {
-          where: { id_user: id },
-        }
-      );
-      res.send({
-        resp: resp,
-        message: "Usuario actualizado correctamente",
-      });
-    } else {
-      res.send({
-        message:
-          "Estás intentado realizar un modificación que no corresponde a tu perfil en la ruta",
-      });
-    }
+    let rolUser = mapUser.map((rol) => rol.name_rol);
+    console.log(objectUser);
+    let resp = await models.users.update(
+      {
+        name: user.name,
+        phone: user.phone,
+      },
+
+      {
+        where: { email: user.email },
+      }
+    );
+    console.log("name", user.name);
+    const secret = process.env.JWT_SECRET || "";
+    const jwt = jsonwebtoken.sign(
+      {
+        id_user: objectUser[0],
+        name: user.name,
+        email: user.email,
+        created: Date.now(),
+        name_rol: rolUser[0],
+      },
+      secret
+    );
+    res.send({
+      resp: resp,
+      message: "Usuario actualizado correctamente",
+      jwt: jwt,
+    });
   } catch (err) {
     res.send(err);
   }

@@ -39,7 +39,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       unique: true
     },
-    dateBirth: DataTypes.DATEONLY,
     phone: {
       type: DataTypes.STRING,
       unique: true

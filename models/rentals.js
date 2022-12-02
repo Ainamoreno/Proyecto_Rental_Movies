@@ -1,4 +1,5 @@
 'use strict';
+let date = `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`;
 const {
   Model
 } = require('sequelize');
@@ -33,6 +34,15 @@ module.exports = (sequelize, DataTypes) => {
     id_user: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    date_rental: {
+      type: DataTypes.DATEONLY,
+      defaultValue: date,
+ 
+    },
+    date_return: {
+      type: DataTypes.DATEONLY,
+      defaultValue: `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`
     }
   },
     {
