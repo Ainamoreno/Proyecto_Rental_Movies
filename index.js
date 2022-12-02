@@ -5,7 +5,7 @@ const db = require('./db/db');
 const router = require('./router');
 const morgan = require('morgan');
 const { sequelize } = require('./models/index')
-const PORT = process.env.DB_PORT || 7001;
+let PORT = process.env.YOUR_PORT || process.env.PORT || 3000;
 require('dotenv').config({path:'.env'})
 
 
