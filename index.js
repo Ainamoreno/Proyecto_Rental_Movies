@@ -11,7 +11,7 @@ require('dotenv').config({path:'.env'})
 
 /*Json, ejecutamos el método json de express que nos permitirá 
 poder trabajar con formato json en nuestra app*/
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 app.use(router);
 app.use(morgan('dev'));
