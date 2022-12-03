@@ -5,7 +5,7 @@ const db = require('./db/db');
 const router = require('./router');
 const morgan = require('morgan');
 const { sequelize } = require('./models/index')
-let PORT = process.env.YOUR_PORT || process.env.PORT || 3000;
+let PORT = process.env.YOUR_PORT || process.env.PORT || 7001;
 require('dotenv').config({path:'.env'})
 
 
@@ -15,6 +15,7 @@ app.use(cors());
 app.use(express.json());
 app.use(router);
 app.use(morgan('dev'));
+app.use(express.static(__dirname));
 
 
 app.listen(PORT, () => {
@@ -26,4 +27,8 @@ app.listen(PORT, () => {
     }).catch(error => {
         console.log('Se ha producido un error: ' + error)
     })
+});
+
+app.get("/*", function(req, res) {
+    res.sendFile(path.join(__dirname, "index.html"));
 });
