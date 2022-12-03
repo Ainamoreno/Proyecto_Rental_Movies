@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     date_return: {
       type: DataTypes.DATEONLY,
-      defaultValue: `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`
+      defaultValue: `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()+7}`
     }
   },
     {
