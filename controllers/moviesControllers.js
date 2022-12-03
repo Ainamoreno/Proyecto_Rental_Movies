@@ -12,6 +12,7 @@ moviesController.getMovies_1 = async (req, res) => {
       order: [["score", "DESC"]],
     });
     res.send(resp);
+    console.log(resp)
   } catch (err) {
     res.send(err);
   }
