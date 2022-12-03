@@ -158,7 +158,7 @@ module.exports = {
       {
         id_article: 16,
         name: 'La casa del dragón',
-        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/c2gon6zbqzL73DOl8mPQMMUJXvE.jpg',
+        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xiB0hsxMpgxpJehYxUDhiUkg2w.jpg',
         score: 8.5,
         description: 'Basada en el libro "Fuego y Sangre" de George R.R. Martin. La serie se centra en la casa Targaryen, trescientos años antes de los eventos vistos en "Juego de Tronos".',
         data_premiere: '2022-08-24',
