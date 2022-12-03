@@ -1,5 +1,5 @@
 'use strict';
-let date = `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`;
+let date = `${new Date().getFullYear()}-${new Date().getMonth()}+1-${new Date().getDate()}`;
 const {
   Model
 } = require('sequelize');
@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     date_return: {
       type: DataTypes.DATEONLY,
-      defaultValue: `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()+7}`
+      defaultValue: `${new Date().getFullYear()}-${new Date().getMonth()}+1-${new Date().getDate()}+7`
     }
   },
     {
