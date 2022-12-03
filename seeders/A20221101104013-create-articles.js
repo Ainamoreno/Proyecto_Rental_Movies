@@ -78,7 +78,7 @@ module.exports = {
       {
         id_article: 8,
         name: "Jeepers Creepers: Reborn",
-        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/kY0BogCM8SkNJ0MNiHB3VTM86Tz.jpg',
+        photo: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qVVegwPsW6n9unBtLWq1rzOutka.jpg',
         score: 7.9,
         description: "El Horror Hound festival celebra su primer evento en Luisiana, donde atrae a cientos de fanes del terror; entre ellos se encuentra Laine que, obligada a asistir por Chase, su novio, comienza a experimentar premoniciones inexplicables y visiones inquietantes relacionadas con el pasado de la ciudad y con El Creeper. A medida que avanza el festival y el entretenimiento empapado de sangre se convierte en un frenesí, Laine cree que algo sobrenatural ha sido convocado y que ella está en el centro de todo.",
         data_premiere: "2022-09-15",
